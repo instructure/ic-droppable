@@ -9,7 +9,8 @@
     "rf-changelog": "0.0.2",
     "broccoli-cli": "0.0.1",
     "broccoli": "^0.2.2",
-    "broccoli-dist-es6-module": "^0.1.8"
+    "broccoli-dist-es6-module": "^0.1.8",
+    "rf-release": "^0.1.2"
   },
   "scripts": {
     "test": "bower install && testem ci"
