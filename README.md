@@ -3,6 +3,11 @@ ic-droppable
 
 Ember component mixin that wraps native drop events.
 
+Demo
+----
+
+https://instructure.github.io/ic-droppable
+
 Installation
 ------------
 
