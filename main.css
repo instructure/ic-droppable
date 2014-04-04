@@ -1,0 +1,18 @@
+x-image-drop {
+  display: block;
+  padding: 50px;
+  border: solid 1px;
+  text-align: center;
+  width: 80%;
+  margin: 50px auto;
+}
+
+x-image-drop.accepts-drag {
+  border: dashed 1px;
+  background: hsl(200, 50%, 80%);
+}
+
+img {
+  vertical-align: top;
+}
+
