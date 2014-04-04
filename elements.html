@@ -1,0 +1,131 @@
+<!doctype html public "display of affection">
+<title>ic-droppable demo</title>
+<link rel="stylesheet" href="http://instructure.github.io/ic-ember/shared/styles.css">
+<link rel="stylesheet" href="main.css">
+
+<header class="branding padbox">
+  <h1>ic-droppable</h1>
+  <h2>Ember View/Component Mixin for native drag and drop targets.</h2>
+  <p>By <a target="_top" href="http://instructure.com">Instructure, Inc</a></p>
+  <ul class="navbar" role="nav">
+    <li><a href="index.html">images from the desktop</a>
+    <li><a href="elements.html" class="active">drops from elements</a>
+  </ul>
+</header>
+
+<a class="source-link" href="https://github.com/instructure/ic-droppable/blob/gh-pages/elements.html">Demo Source</a>
+
+<div id="demo" class="padbox"></div>
+
+<a target="_top" href="https://github.com/instructure/ic-droppable"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://github-camo.global.ssl.fastly.net/a6677b08c955af8400f44c6298f40e7d19cc5b2d/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677261795f3664366436642e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png"></a>
+
+<script type="text/x-handlebars">
+{{#x-dnd-cart items=cartItems id="cart"}}
+  <p>Drag the tacos you would like into here</p>
+  <p>Price: ${{totalPrice}}</p>
+  <ul>
+    {{#each item in cartItems}}
+      <li>{{item.name}} <button {{action "remove" item}}>remove</button></li>
+    {{/each}}
+  </ul>
+{{/x-dnd-cart}}
+
+<ul id="tacos">
+  {{#each taco in tacos}}
+    <li>
+      {{#x-taco model=taco}}
+        {{taco.name}} ${{taco.price}}
+      {{/x-taco}}
+    </li>
+  {{/each}}
+</ul>
+
+</script>
+
+<script src="bower_components/jquery/dist/jquery.js"></script>
+<script src="bower_components/handlebars/handlebars.js"></script>
+<script src="bower_components/ember/ember.js"></script>
+<script src="bower_components/ic-droppable/dist/globals/main.js"></script>
+
+<script>
+var Droppable = ic.Droppable.default;
+
+App = Ember.Application.create({
+  rootElement: '#demo'
+});
+
+App.ApplicationController = Ember.Controller.extend({
+
+  cartItems: [],
+
+  tacos: tacos(),
+
+  totalPrice: function() {
+    return this.get('cartItems').reduce(function(total, taco) {
+      return total + taco.price;
+    }, 0);
+  }.property('cartItems.@each.price'),
+
+  actions: {
+    remove: function(item) {
+      this.get('cartItems').removeObject(item);
+    }
+  }
+
+});
+
+App.XDndCartComponent = Ember.Component.extend(Droppable, {
+
+  tagName: 'x-dnd-cart',
+
+  setItems: function() {
+    if (!this.get('items')) this.set('items', []);
+  }.on('init'),
+
+  validateDragEvent: function(event) {
+    return event.dataTransfer.types.contains('text/x-taco');
+  },
+
+  acceptDrop: function(event) {
+    var tacoData = event.dataTransfer.getData('text/x-taco');
+    var taco = JSON.parse(tacoData);
+    this.get('items').addObject(taco);
+  }
+
+});
+
+App.XTacoComponent = Ember.Component.extend({
+
+  tagName: 'x-taco',
+
+  attributeBindings: ['draggable'],
+
+  draggable: 'true',
+
+  setEventData: function(event) {
+    var tacoData = JSON.stringify(this.get('model'));
+    event.dataTransfer.setData('text/x-taco', tacoData);
+  }.on('dragStart')
+
+});
+
+function tacos() {
+  return [
+    { name: 'Carnitas', price: 2 },
+    { name: 'Carne Adovada', price: 3 },
+    { name: 'Chile Verde', price: 2 },
+    { name: 'Carne Desebrada', price: 3 },
+    { name: 'Pollo Asado', price: 2 },
+    { name: 'Machaca', price: 4 },
+    { name: 'Roast Pork', price: 2 },
+    { name: 'Marinated Pork', price: 3 },
+    { name: 'Pork con Chile Verde', price: 4 },
+    { name: 'Steak', price: 3 },
+    { name: 'Shredded Beef', price: 2 },
+    { name: 'Broiled Chicken', price: 2 },
+    { name: 'Egg', price: 1 },
+  ];
+}
+</script>
+
+
