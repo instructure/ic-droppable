@@ -1,0 +1,33 @@
+{
+  "name": "ic-droppable",
+  "version": "0.1.0",
+  "authors": [
+    "Ryan Florence <rpflorence@gmail.com>",
+    "Aaron Shafovaloff"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "bower_components",
+    "node_modules",
+    "package.json",
+    "testem.json",
+    "test.js",
+    "**/.*"
+  ],
+  "dependencies": {
+    "ember": "^1.3.0"
+  },
+  "devDependencies": {
+    "ember-qunit": "~0.1.6"
+  },
+  "homepage": "https://github.com/instructure/ic-droppable",
+  "_release": "0.1.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.1.0",
+    "commit": "150fb19d664869f11d4f9ca93f2f63a07bda7669"
+  },
+  "_source": "git://github.com/instructure/ic-droppable.git",
+  "_target": "0.1.0",
+  "_originalSource": "ic-droppable"
+}
