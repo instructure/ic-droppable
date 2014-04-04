@@ -15,7 +15,7 @@ Installation
 
 `npm install ic-droppable`
 
-... or download one of the distrobutions in `dist` and include however
+... or download one of the distributions in `dist` and include however
 you want.
 
 Module Support
