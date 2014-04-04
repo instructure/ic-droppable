@@ -20,15 +20,15 @@
 <a target="_top" href="https://github.com/instructure/ic-droppable"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://github-camo.global.ssl.fastly.net/a6677b08c955af8400f44c6298f40e7d19cc5b2d/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677261795f3664366436642e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png"></a>
 
 <script type="text/x-handlebars">
-{{#x-dnd-cart items=cartItems id="cart"}}
+{{#x-taco-cart items=cartTacos id="cart"}}
   <p>Drag the tacos you would like into here</p>
   <p>Price: ${{totalPrice}}</p>
   <ul>
-    {{#each item in cartItems}}
+    {{#each item in cartTacos}}
       <li>{{item.name}} <button {{action "remove" item}}>remove</button></li>
     {{/each}}
   </ul>
-{{/x-dnd-cart}}
+{{/x-taco-cart}}
 
 <ul id="tacos">
   {{#each taco in tacos}}
@@ -56,27 +56,27 @@ App = Ember.Application.create({
 
 App.ApplicationController = Ember.Controller.extend({
 
-  cartItems: [],
+  cartTacos: [],
 
   tacos: tacos(),
 
   totalPrice: function() {
-    return this.get('cartItems').reduce(function(total, taco) {
+    return this.get('cartTacos').reduce(function(total, taco) {
       return total + taco.price;
     }, 0);
-  }.property('cartItems.@each.price'),
+  }.property('cartTacos.@each.price'),
 
   actions: {
     remove: function(item) {
-      this.get('cartItems').removeObject(item);
+      this.get('cartTacos').removeObject(item);
     }
   }
 
 });
 
-App.XDndCartComponent = Ember.Component.extend(Droppable, {
+App.XTacoCartComponent = Ember.Component.extend(Droppable, {
 
-  tagName: 'x-dnd-cart',
+  tagName: 'x-taco-cart',
 
   setItems: function() {
     if (!this.get('items')) this.set('items', []);
