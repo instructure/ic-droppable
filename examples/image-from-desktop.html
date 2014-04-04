@@ -4,7 +4,7 @@
 <style>
 x-image-drop {
   display: block;
-  padding: 100px;
+  padding: 50px;
   border: solid 1px;
   text-align: center;
   width: 80%;
@@ -13,21 +13,23 @@ x-image-drop {
 
 x-image-drop.accepts-drag {
   border: dashed 1px;
+  background: hsl(200, 50%, 80%);
+}
+
+img {
+  vertical-align: top;
 }
 </style>
 
 <script type="text/x-handlebars">
-{{#x-image-drop}}
-  Drop one or many jpegs on me, people (and only jpegs)
+{{#x-image-drop images=userImages}}
+  Drop one or many jpegs on me (and only jpegs)
 {{/x-image-drop}}
-</script>
 
-
-<script type="text/x-handlebars" id="components/x-image-drop">
-{{yield}}
 <br>
-{{#each image in images}}
-  <img {{bind-attr src=image.src}}><br>
+
+{{#each image in userImages}}
+  <img {{bind-attr src=image.src title=image.name}}>
 {{/each}}
 </script>
 
@@ -63,7 +65,6 @@ App.XImageDropComponent = Ember.Component.extend(Droppable, {
       reader.onload = function(e) {
         file.src = e.target.result;
         images.addObject(file);
-        console.log(images);
       };
       reader.readAsDataURL(file);
     });
