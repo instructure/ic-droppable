@@ -87,7 +87,9 @@ var Droppable = Ember.Mixin.create({
     }
     if (this.validateDragEvent(event)) {
       this.set('accepts-drag', true);
-      return this._allowDrop(event);
+      this._allowDrop(event);
+    } else {
+      this._resetDroppability();
     }
   }.on('dragOver'),
 
@@ -155,7 +157,7 @@ var Droppable = Ember.Mixin.create({
 Droppable._currentDrag = null;
 window.addEventListener('dragstart', function(event) {
   Droppable._currentDrag = event.target;
-}, false);
+}, true);
 
 exports["default"] = Droppable;
 },{}]},{},[1])

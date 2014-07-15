@@ -89,7 +89,9 @@ define(
         }
         if (this.validateDragEvent(event)) {
           this.set('accepts-drag', true);
-          return this._allowDrop(event);
+          this._allowDrop(event);
+        } else {
+          this._resetDroppability();
         }
       }.on('dragOver'),
 
@@ -157,7 +159,7 @@ define(
     Droppable._currentDrag = null;
     window.addEventListener('dragstart', function(event) {
       Droppable._currentDrag = event.target;
-    }, false);
+    }, true);
 
     __exports__["default"] = Droppable;
   });
