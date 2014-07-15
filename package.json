@@ -1,6 +1,6 @@
 {
   "name": "ic-droppable",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Ember component mixin that wraps native drop events",
   "main": "main.js",
   "devDependencies": {
