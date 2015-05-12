@@ -27,7 +27,7 @@ Module Support
 
 - CJS
 
-  `var Droppable = require('ic-styled')`
+  `var Droppable = require('ic-droppable')`
 
 - Globals
 
