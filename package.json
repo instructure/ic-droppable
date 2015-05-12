@@ -2,7 +2,7 @@
   "name": "ic-droppable",
   "version": "0.1.1",
   "description": "Ember component mixin that wraps native drop events",
-  "main": "main.js",
+  "main": "./lib/main.js",
   "devDependencies": {
     "testem": "^0.6.17",
     "bower": "^1.3.8",
@@ -17,7 +17,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/instructure/ic-styled.git"
+    "url": "https://github.com/instructure/ic-droppable.git"
   },
   "keywords": [
     "ember",
@@ -27,7 +27,7 @@
   "author": "Ryan Florence <rpflorence@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/instructure/ic-styled/issues"
+    "url": "https://github.com/instructure/ic-droppable/issues"
   },
-  "homepage": "https://github.com/instructure/ic-styled"
+  "homepage": "https://github.com/instructure/ic-droppable"
 }
