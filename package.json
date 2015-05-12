@@ -17,7 +17,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/instructure/ic-styled.git"
+    "url": "https://github.com/instructure/ic-droppable.git"
   },
   "keywords": [
     "ember",
@@ -27,7 +27,7 @@
   "author": "Ryan Florence <rpflorence@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/instructure/ic-styled/issues"
+    "url": "https://github.com/instructure/ic-droppable/issues"
   },
-  "homepage": "https://github.com/instructure/ic-styled"
+  "homepage": "https://github.com/instructure/ic-droppable"
 }
