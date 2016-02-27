@@ -1,4 +1,4 @@
-ic-droppable
+ic-droppable (no longer maintained)
 ============
 
 Ember component mixin that wraps native drop events.
